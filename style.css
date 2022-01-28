@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Fallout Regular; /* Гарнитура шрифта */
-    src: url(\fonts\Fallout Regular\fallout.ttf); /* Путь к файлу со шрифтом */
+    font-family: Fallout Regular; /* typeface of font */
+    src: url(\fonts\Fallout Regular\fallout.ttf); /* source to file */
    }
 
 
