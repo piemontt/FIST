@@ -7,7 +7,7 @@ z-index: 5;
 
 .display-text {
 position: absolute;
-z-index: 6;
+z-index: 7;
 }
 
 
@@ -22,6 +22,20 @@ width: 16px;
 
 
 
+.arrowup1:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowup1:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
+}
+
+
+
 .number1 {
 left: 393px;
 top: 168px;
@@ -29,16 +43,31 @@ z-index: 7;
 position: absolute;
 font: 25pt fallout regular; 
 color: #1d8032;
+
 }
 
 
 
 .arrowdown1 {
 position: absolute;
-top: 199px;
+top: 200px;
 left: 400px;
 height: 15px;
 width: 16px;
+}
+
+
+
+.arrowdown1:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowdown1:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
 }
 
 
@@ -49,6 +78,20 @@ top: 156px;
 left: 444px;
 height: 15px;
 width: 16px;
+}
+
+
+
+.arrowup2:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowup2:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
 }
 
 
@@ -66,10 +109,24 @@ color: #1d8032;
 
 .arrowdown2 {
 position: absolute;
-top: 199px;
+top: 200px;
 left: 444px;
 height: 15px;
 width: 16px;
+}
+
+
+
+.arrowdown2:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowdown2:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
 }
 
 
@@ -82,6 +139,19 @@ height: 15px;
 width: 16px;
 }
 
+
+
+.arrowup3:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowup3:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
+}
 
 
 .number3 {
@@ -97,8 +167,22 @@ color: #1d8032;
 
 .arrowdown3 {
 position: absolute;
-top: 199px;
+top: 200px;
 left: 487px;
 height: 15px;
 width: 16px;
+}
+
+
+
+.arrowdown3:hover { 
+outline: 2px dashed #1d8010; 
+outline-offset: -2px;
+}
+
+
+
+.arrowdown3:active { 
+outline: 2px dashed #8ccb5e; 
+outline-offset: -2px;
 }
