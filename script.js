@@ -111,3 +111,5 @@ arrowDown3.onclick = function() {
 	console.log(num3Out)
 	num3In.textContent = num3Out  }
 }
+
+console.log(num3In)
