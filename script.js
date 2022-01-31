@@ -108,7 +108,11 @@ let arrowDown3 = document.querySelector( '.arrowdown3' ) /* THIRD arrow down -1 
 arrowDown3.onclick = function() {
 	if (num3Out >= 1) {
 		num3Out -=1
+	  }
+	else if(num3Out == 0) {
+		num3Out = 59
+	  }
+	num3In.textContent = num3Out
 	console.log(num3Out)
-	num3In.textContent = num3Out  }
 }
 
