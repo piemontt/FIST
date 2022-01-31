@@ -112,4 +112,3 @@ arrowDown3.onclick = function() {
 	num3In.textContent = num3Out  }
 }
 
-console.log(num3In)
