@@ -50,27 +50,33 @@ console.log(num2Out)
 let arrowUp2 = document.querySelector( '.arrowup2' ) /* SECOND arrow up +1 (MINUTES) */
 
 arrowUp2.onclick = function() {
-	
+if (num2Out <= 58) {
 	num2Out +=1
-	console.log(num2Out)
 	num2In.textContent = num2Out
-
+    }
+else if (num2Out == 59) {
+	num2Out = 0 
+	}
+    console.log(num2Out)
+    num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 }
 
 
 
-let arrowDown2 = document.querySelector( '.arrowdown2' ) /* SECOND arrow down -1 (MINUTES) */
+
+let arrowDown2 = document.querySelector( '.arrowdown2' ) /* SECOND arrow down -1 (SECONDS) */
 
 arrowDown2.onclick = function() {
-	
+if (num2Out >= 1) {
 	num2Out -=1
+	}
+else if(num2Out == 0) {
+	num2Out = 59
+	}
 	console.log(num2Out)
-	num2In.textContent = num2Out
-
+	num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
+	
 }
-
-
-
 
 
 
@@ -88,16 +94,15 @@ console.log(num3Out)
 let arrowUp3 = document.querySelector( '.arrowup3' ) /* THIRD arrow up +1 (SECONDS) */
 
 arrowUp3.onclick = function() {
-	if (num3Out <= 58) {
+if (num3Out <= 58) {
 	num3Out +=1
-	console.log(num3Out)
 	num3In.textContent = num3Out
-}
+    }
 else if (num3Out == 59) {
-		num3Out = 0
-		console.log(num3Out)
-	num3In.textContent = num3Out
-}
+		num3Out = 0 
+    }
+    console.log(num3Out)
+    num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 }
 
 
@@ -106,13 +111,15 @@ else if (num3Out == 59) {
 let arrowDown3 = document.querySelector( '.arrowdown3' ) /* THIRD arrow down -1 (SECONDS) */
 
 arrowDown3.onclick = function() {
-	if (num3Out >= 1) {
+if (num3Out >= 1) {
 		num3Out -=1
-	  }
-	else if(num3Out == 0) {
+	}
+else if(num3Out == 0) {
 		num3Out = 59
-	  }
-	num3In.textContent = num3Out
+		
+	}
 	console.log(num3Out)
+	num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
+	
 }
 
