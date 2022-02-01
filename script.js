@@ -138,10 +138,25 @@ else if(num3Out == 0) {
 let secondsTimer = () =>  { if (num3Out > 0) { 
 	num3Out = num3Out -1
 	num3In.textContent = String(num3Out).padStart(2,'0')
-} 
+	console.log(num3Out)
+}
+    
+    else if (num3Out == 0) {
+    alert('finish');
+     
+       
+}
+    
 }
 
-firstButton.onclick = secondsTimer
+let startSecondsTimer = () => {setInterval(secondsTimer, 1000)
+if (num3Out == 0) {
+	clearInterval(startSecondsTimer);
+}};
+
+
+
+firstButton.addEventListener("click", startSecondsTimer);
 
 
 
