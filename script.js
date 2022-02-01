@@ -135,29 +135,37 @@ else if(num3Out == 0) {
 
 
 
-let secondsTimer = () =>  { if (num3Out > 0) { 
+
+
+secondsCounter = () => {
+	let secondsTimer = () =>  { if ( num3Out > 0 ) { 
 	num3Out = num3Out -1
-	num3In.textContent = String(num3Out).padStart(2,'0')
-	console.log(num3Out)
+	num3In.textContent = String( num3Out ).padStart( 2,'0' )
+	console.log( num3Out )
 }
-    
-    else if (num3Out == 0) {
-    alert('finish');
-     
-       
-}
-    
+    else if ( num3Out == 0 ) {
+    clearInterval( setIntSec )
 }
 
-let startSecondsTimer = () => {setInterval(secondsTimer, 1000)
-if (num3Out == 0) {
-	clearInterval(startSecondsTimer);
-}};
+}
+    let setIntSec = setInterval( secondsTimer, 1000 )
+}
+
+
+firstButton.addEventListener( "click", secondsCounter )
 
 
 
-firstButton.addEventListener("click", startSecondsTimer);
+let reset = () => { 
+num1Out = 0
+num2Out = 0
+num3Out = 0
+num1In.textContent = String( 0 ).padStart( 2,'0' ) 
+num2In.textContent = String( 0 ).padStart( 2,'0' ) 
+num3In.textContent = String( 0 ).padStart( 2,'0' ) 
+}
 
+secondButton.addEventListener( "click", reset )
 
 
 
