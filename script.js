@@ -1,3 +1,15 @@
+/*red buttons*/
+const firstButton = document.getElementById('buttonSetTimer') 
+
+const secondButton = document.getElementById('buttonStopWatch')
+
+const thirdButton = document.getElementById('buttonLap')
+
+const fourthButton = document.getElementById('buttonStart')
+
+const fifthButton = document.getElementById('buttonStop')
+/*red buttons*/
+
 
 
 
@@ -12,11 +24,11 @@ console.log(num1Out)
 let arrowUp1 = document.querySelector( '.arrowup1' ) /* First arrow up +1 (HOURS) */
 
 arrowUp1.onclick = function() {
-if (num1Out <= 23) {
+if (num1Out <= 22) {
 	num1Out +=1
 	num1In.textContent = num1Out
     }
-else if (num1Out == 24) {
+else if (num1Out == 23) {
 	num1Out = 0 
 	}
     console.log(num1Out)
@@ -32,7 +44,7 @@ if (num1Out >= 1) {
 	num1Out -=1
 	}
 else if(num1Out == 0) {
-	num1Out = 24
+	num1Out = 23
 	}
 	console.log(num1Out)
 	num1In.textContent = String(num1Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
@@ -119,4 +131,23 @@ else if(num3Out == 0) {
 	num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 	
 }
+
+
+
+
+let secondsTimer = () =>  { if (num3Out > 0) { 
+	num3Out = num3Out -1
+	num3In.textContent = String(num3Out).padStart(2,'0')
+} 
+}
+
+firstButton.onclick = secondsTimer
+
+
+
+
+
+
+
+
 
