@@ -12,11 +12,15 @@ console.log(num1Out)
 let arrowUp1 = document.querySelector( '.arrowup1' ) /* First arrow up +1 (HOURS) */
 
 arrowUp1.onclick = function() {
-	
+if (num1Out <= 23) {
 	num1Out +=1
-	console.log(num1Out)
 	num1In.textContent = num1Out
-
+    }
+else if (num1Out == 24) {
+	num1Out = 0 
+	}
+    console.log(num1Out)
+    num1In.textContent = String(num1Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 }
 
 
@@ -24,18 +28,16 @@ arrowUp1.onclick = function() {
 let arrowDown1 = document.querySelector( '.arrowdown1' ) /* First arrow down -1 (HOURS) */
 
 arrowDown1.onclick = function() {
-	
+if (num1Out >= 1) {
 	num1Out -=1
+	}
+else if(num1Out == 0) {
+	num1Out = 24
+	}
 	console.log(num1Out)
-	num1In.textContent = num1Out
-
+	num1In.textContent = String(num1Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
+	
 }
-
-
-
-
-
-
 
 
 
@@ -63,7 +65,6 @@ else if (num2Out == 59) {
 
 
 
-
 let arrowDown2 = document.querySelector( '.arrowdown2' ) /* SECOND arrow down -1 (SECONDS) */
 
 arrowDown2.onclick = function() {
@@ -77,9 +78,6 @@ else if(num2Out == 0) {
 	num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 	
 }
-
-
-
 
 
 
@@ -104,7 +102,6 @@ else if (num3Out == 59) {
     console.log(num3Out)
     num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
 }
-
 
 
 
