@@ -38,14 +38,16 @@ if (num1Out <= 22) {
     else if (num1Out == 23) {
 	num1Out = 0 
 	}
+	
     console.log(num1Out)
     num1In.textContent = String(num1Out).padStart(2,'0'); /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return num1Out;
+    return parseInt(num1In.textContent);
+    
 }
 
 
-arrowUp1.onclick = foo1
-
+arrowUp1.addEventListener("click", foo1)  
+num1Out = foo1()
 
 
 let arrowDown1 = document.querySelector( '.arrowdown1' ) /* First arrow down -1 (HOURS) */
@@ -58,15 +60,15 @@ if (num1Out >= 1) {
 else if(num1Out == 0) {
 	num1Out = 23
 	}
+	
 	console.log(num1Out)
 	num1In.textContent = String(num1Out).padStart(2,'0'); /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	return num1Out;
+	 return parseInt(num1In.textContent);
+	
 }
 
 
-arrowDown1.onclick = foo2
-
-num1Out = foo1()
+arrowDown1.addEventListener("click", foo2)  
 num1Out = foo2()
 
 
@@ -97,12 +99,14 @@ if (num2Out <= 58) {
 else if (num2Out == 59) {
 	num2Out = 0 
 	}
+	
     console.log(num2Out)
     num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return num2Out;
+    return parseInt(num2In.textContent);
+    
 }
 
-arrowUp2.onclick = foo3
+arrowUp2.addEventListener("click", foo3)  
 
 
 
@@ -118,12 +122,14 @@ if (num2Out >= 1) {
 else if(num2Out == 0) {
 	num2Out = 59
 	}
+	
 	console.log(num2Out)
 	num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	return num2Out;
+	return parseInt(num2In.textContent);
+	
 }
 
-arrowDown2.onclick = foo4
+arrowDown2.addEventListener("click", foo4)  
 
 num2Out = foo3()
 num2Out = foo4()
@@ -158,12 +164,14 @@ if (num3Out <= 58) {
 else if (num3Out == 59) {
 	num3Out = 0 
     }
+   
+
     console.log(num3Out)
     num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return num3Out;
-}
+    return parseInt(num3In.textContent);
+    }
 
-arrowUp3.onclick = foo5
+arrowUp3.addEventListener("click", foo5)  
 
 
 
@@ -180,12 +188,14 @@ else if(num3Out == 0) {
 		num3Out = 59
 		
 	}
+	
 	console.log(num3Out)
 	num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	return num3Out;
+	return parseInt(num3In.textContent);
+
 }
 
-arrowDown3.onclick = foo6
+arrowDown3.addEventListener("click", foo6)  
 
 num3Out = foo5()
 num3Out = foo6()
@@ -193,9 +203,17 @@ num3Out = foo6()
 
 
 let getSeconds = () => {return num1Out*3600 + num2Out*60 + num3Out}
-console.log(getSeconds())
+timeSeconds = getSeconds()
 
 
+
+
+
+
+/*
+timer = setInterval(function(){
+seconds = 
+}, 1000)
 
 
 
