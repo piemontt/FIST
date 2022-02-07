@@ -1,209 +1,130 @@
-/*red buttons*/
 const firstButton = document.getElementById('buttonSetTimer') 
 
-const secondButton = document.getElementById('buttonStopWatch')
+const secondButton = document.getElementById('buttonStopWatch') 
 
-const thirdButton = document.getElementById('buttonLap')
+const thirdButton = document.getElementById('buttonLap') 
 
 const fourthButton = document.getElementById('buttonStart')
 
-const fifthButton = document.getElementById('buttonStop')
-/*red buttons*/
+const fifthButton = document.getElementById('buttonStop')  
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const elementHours = document.querySelector( '.number1' )  //GET VALUE OF HOURS
 
+let currentHours = Number(elementHours.textContent) 
 
+const hoursButtonUp = document.querySelector( '.arrowup1' ) //BUTTON UP
 
-
-
-
-
-
-let num1In = document.querySelector( '.number1' )  /*get value of HOURS*/
-
-let num1Out = 0
-
-num1Out = parseInt(num1In.textContent)
-
-console.log(num1Out)
-
-
-let arrowUp1 = document.querySelector( '.arrowup1' ) /* First arrow up +1 (HOURS) */
-
-
-function foo1() {
-if (num1Out <= 22) {
-	num1Out +=1
+function getEnlargedHours() {
+if (currentHours <= 58) {
+	currentHours += 1
     }
-    else if (num1Out == 23) {
-	num1Out = 0 
+else if (currentHours === 59) {
+	currentHours = 0 
 	}
-	
-    console.log(num1Out)
-    num1In.textContent = String(num1Out).padStart(2,'0'); /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return parseInt(num1In.textContent);
-    
+	elementHours.textContent = String(currentHours).padStart(2,'0')
+    return currentHours;
 }
+hoursButtonUp.addEventListener("click", getEnlargedHours)  
+////////////////////////////////////////////////////////////////
+const hoursButtonDown = document.querySelector( '.arrowdown1' )  //BUTTON DOWN
 
-
-arrowUp1.addEventListener("click", foo1)  
-num1Out = foo1()
-
-
-let arrowDown1 = document.querySelector( '.arrowdown1' ) /* First arrow down -1 (HOURS) */
-
-
-function foo2() {
-if (num1Out >= 1) {
-	num1Out -=1
+function getReducedHours() {
+if (currentHours >= 1) {
+	currentHours -=1
 	}
-else if(num1Out == 0) {
-	num1Out = 23
+else if(currentHours === 0) {
+	currentHours = 23
 	}
-	
-	console.log(num1Out)
-	num1In.textContent = String(num1Out).padStart(2,'0'); /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	 return parseInt(num1In.textContent);
-	
+	elementHours.textContent = String(currentHours).padStart(2,'0'); 
+	return currentHours;
 }
+hoursButtonDown.addEventListener("click", getReducedHours)  
 
+currentHours = getReducedHours()
+currentHours = getEnlargedHours()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const elementMinutes = document.querySelector( '.number2' )  //GET VALUE OF MINUTES
 
-arrowDown1.addEventListener("click", foo2)  
-num1Out = foo2()
+let currentMinutes = Number(elementMinutes.textContent)
 
+const minutesButtonUp = document.querySelector( '.arrowup2' )   //BUTTON UP
 
+function getEnlargedMinutes() {
+if (currentMinutes <= 58) {
+	currentMinutes +=1
+	}
+else if (currentMinutes == 59) {
+	currentMinutes = 0 
+	}
+	elementMinutes.textContent = String(currentMinutes).padStart(2,'0') 
+    return currentMinutes;
+}
+minutesButtonUp.addEventListener("click", getEnlargedMinutes)  
+////////////////////////////////////////////////////////////////
+const minutesButtonDown = document.querySelector( '.arrowdown2' )   //BUTTON DOWN
 
+function getReducedMinutes() {
+if (currentMinutes >= 1) {
+	currentMinutes -=1
+	}
+else if(currentMinutes == 0) {
+	currentMinutes = 59
+	}
+	elementMinutes.textContent = String(currentMinutes).padStart(2,'0') 
+	return currentMinutes;
+}
+minutesButtonDown.addEventListener("click", getReducedMinutes)  
 
+currentMinutes = getEnlargedMinutes()
+currentMinutes = getReducedMinutes()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const elementSeconds = document.querySelector( '.number3' )  //GET VALUE OF SECONDS
 
+let currentSeconds = Number(elementSeconds.textContent)
 
+const secondsButtonUp = document.querySelector( '.arrowup3' ) //BUTTON UP
 
-
-
-let num2In = document.querySelector( '.number2' )  /*get value of MINUTES*/
-
-let num2Out = 0
-
-num2Out = parseInt(num2In.textContent)
-
-console.log(num2Out)
-
-
-let arrowUp2 = document.querySelector( '.arrowup2' ) /* SECOND arrow up +1 (MINUTES) */
-
-
-function foo3() {
-if (num2Out <= 58) {
-	num2Out +=1
-	num2In.textContent = num2Out
+function getEnlargedSeconds() {
+if (currentSeconds <= 58) {
+	currentSeconds +=1
+	}
+else if (currentSeconds == 59) {
+	currentSeconds = 0 
     }
-else if (num2Out == 59) {
-	num2Out = 0 
+    elementSeconds.textContent = String(currentSeconds).padStart(2,'0') 
+    return currentSeconds;
+}
+secondsButtonUp.addEventListener("click", getEnlargedSeconds)  
+////////////////////////////////////////////////////////////////
+const secondsButtonDown = document.querySelector( '.arrowdown3' )  //BUTTON DOWN
+
+function getReducedSeconds() {
+if (currentSeconds >= 1) {
+	currentSeconds -=1
 	}
-	
-    console.log(num2Out)
-    num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return parseInt(num2In.textContent);
-    
+else if(currentSeconds == 0) {
+		currentSeconds = 59	
+	}
+	elementSeconds.textContent = String(currentSeconds).padStart(2,'0') 
+	return currentSeconds;
+}
+secondsButtonDown.addEventListener("click", getReducedSeconds)  
+
+currentSeconds = getEnlargedSeconds()
+currentSeconds = getReducedSeconds()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function sum(a,b,c) {
+  return a*3600 + b*60 + c;
 }
 
-arrowUp2.addEventListener("click", foo3)  
+let result = sum(currentHours,currentMinutes,currentSeconds);
 
 
 
 
-
-let arrowDown2 = document.querySelector( '.arrowdown2' ) /* SECOND arrow down -1 (SECONDS) */
-
-
-function foo4() {
-if (num2Out >= 1) {
-	num2Out -=1
-	}
-else if(num2Out == 0) {
-	num2Out = 59
-	}
-	
-	console.log(num2Out)
-	num2In.textContent = String(num2Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	return parseInt(num2In.textContent);
-	
-}
-
-arrowDown2.addEventListener("click", foo4)  
-
-num2Out = foo3()
-num2Out = foo4()
-
-
-
-
-
-
-
-
-
-
-let num3In = document.querySelector( '.number3' )  /*get value of SECONDS */
-
-let num3Out = 0
-
-num3Out = parseInt(num3In.textContent)
-
-console.log(num3Out)
-
-
-
-
-let arrowUp3 = document.querySelector( '.arrowup3' ) /* THIRD arrow up +1 (SECONDS) */
-
-function foo5() {
-if (num3Out <= 58) {
-	num3Out +=1
-	num3In.textContent = num3Out
-	}
-else if (num3Out == 59) {
-	num3Out = 0 
-    }
-   
-
-    console.log(num3Out)
-    num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-    return parseInt(num3In.textContent);
-    }
-
-arrowUp3.addEventListener("click", foo5)  
-
-
-
-
-let arrowDown3 = document.querySelector( '.arrowdown3' ) /* THIRD arrow down -1 (SECONDS) */
-
-
-function foo6() {
-if (num3Out >= 1) {
-		num3Out -=1
-		
-	}
-else if(num3Out == 0) {
-		num3Out = 59
-		
-	}
-	
-	console.log(num3Out)
-	num3In.textContent = String(num3Out).padStart(2,'0') /*shows counter +"0" ... 01,02,03,04,05,06,07,08,09,10,11*/
-	return parseInt(num3In.textContent);
-
-}
-
-arrowDown3.addEventListener("click", foo6)  
-
-num3Out = foo5()
-num3Out = foo6()
-
-
-
-let getSeconds = () => {return num1Out*3600 + num2Out*60 + num3Out}
-timeSeconds = getSeconds()
 
 
 
