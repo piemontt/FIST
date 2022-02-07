@@ -116,11 +116,58 @@ currentSeconds = getEnlargedSeconds()
 currentSeconds = getReducedSeconds()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let timeMinute = 0
+
 function sum(a,b,c) {
-  return a*3600 + b*60 + c;
+  timeMinute = a*60 + b + c/60;
+  return timeMinute;
 }
 
-let result = sum(currentHours,currentMinutes,currentSeconds);
+firstButton.addEventListener("click", () => {sum(currentHours,currentMinutes,currentSeconds);
+	let timer = setInterval( () => { /////НЕ ВИДИТ timeMinute
+
+    seconds = timeMinut%60 
+    minutes = timeMinut/60%60 
+    hour = timeMinut/60/60%60 
+    
+    if (timeMinut <= 0) {
+        
+        clearInterval(timer);
+    
+    } else {
+        
+        let timerHours = `${Math.trunc(hour)}`
+        let timerMinutes = `${Math.trunc(minuts)}`
+        let timerSeconds = `${seconds}`;
+        
+        elementHours.textContent = timerHours;
+        elementMinutes.textContent = timerMinutes;
+        elementSeconds.textContent = timerSeconds;
+    }
+    --timeMinut;
+}, 1000)
+}
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,9 +179,19 @@ let result = sum(currentHours,currentMinutes,currentSeconds);
 
 
 /*
-timer = setInterval(function(){
-seconds = 
-}, 1000)
+
+}
+
+let result = sum(currentHours,currentMinutes,currentSeconds);
+*/
+
+
+
+
+
+
+
+
 
 
 
