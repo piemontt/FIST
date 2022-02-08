@@ -8,7 +8,7 @@ const fourthButton = document.getElementById('buttonStart')
 
 const fifthButton = document.getElementById('buttonStop')  
 
-
+let timeSeconds = 0
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const elementHours = document.querySelector( '.number1' )  //GET VALUE OF HOURS
 
@@ -17,10 +17,10 @@ let currentHours = Number(elementHours.textContent)
 const hoursButtonUp = document.querySelector( '.arrowup1' ) //BUTTON UP
 
 function getEnlargedHours() {
-if (currentHours <= 58) {
+if (currentHours <= 22) {
 	currentHours += 1
     }
-else if (currentHours === 59) {
+else if (currentHours === 23) {
 	currentHours = 0 
 	}
 	elementHours.textContent = String(currentHours).padStart(2,'0')
@@ -115,36 +115,50 @@ secondsButtonDown.addEventListener("click", getReducedSeconds)
 currentSeconds = getEnlargedSeconds()
 currentSeconds = getReducedSeconds()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-let timeMinute = 0
-
-function sum(a,b,c) {
-  timeMinute = a*60 + b + c/60;
-  return timeMinute;
-}
-
-firstButton.addEventListener("click", () => {sum(currentHours,currentMinutes,currentSeconds);
-	let timer = setInterval( () => { /////НЕ ВИДИТ timeMinute
-
-    seconds = timeMinut%60 
-    minutes = timeMinut/60%60 
-    hour = timeMinut/60/60%60 
-    
-    if (timeMinut <= 0) {
-        
-        clearInterval(timer);
-    
-    } else {
-        
-        let timerHours = `${Math.trunc(hour)}`
-        let timerMinutes = `${Math.trunc(minuts)}`
-        let timerSeconds = `${seconds}`;
-        
-        elementHours.textContent = timerHours;
-        elementMinutes.textContent = timerMinutes;
-        elementSeconds.textContent = timerSeconds;
+let isPaused = false
+function sum() {
+	timeSeconds = currentHours*3600 + currentMinutes*60 + currentSeconds;
+    return timeSeconds;
     }
-    --timeMinut;
+secondButton.addEventListener("click", () => { isPaused = true; })
+
+firstButton.addEventListener("click", sum)
+
+firstButton.addEventListener("click", () => { 
+
+isPaused = false;
+    
+thirdButton.addEventListener("click", () => {
+	clearInterval(timer)
+	timeMinute = 0
+	currentHours = 0
+	currentMinutes = 0
+	currentSeconds = 0
+    elementHours.textContent = '00'
+    elementMinutes.textContent = '00'
+    elementSeconds.textContent = '00'
+}
+)
+	
+	let timer = setInterval( () => {
+    hour = timeSeconds/60/60%60 
+    minutes = timeSeconds/60%60 
+	seconds = timeSeconds%60
+    
+    
+    
+    if (timeSeconds < 1 && isPaused !== true) {
+    clearInterval(timer);
+    elementHours.textContent = '00'
+    elementMinutes.textContent = '00'
+    elementSeconds.textContent = '00'
+    } else {
+
+        elementHours.textContent = String(Math.trunc(hour)).padStart(2,'0');
+        elementMinutes.textContent = String(Math.trunc(minutes)).padStart(2,'0');
+        elementSeconds.textContent = String(Math.trunc(seconds)).padStart(2,'0');
+    }
+    --timeSeconds;
 }, 1000)
 }
 )
@@ -154,8 +168,7 @@ firstButton.addEventListener("click", () => {sum(currentHours,currentMinutes,cur
 
 
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
