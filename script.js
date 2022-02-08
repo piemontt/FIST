@@ -1,12 +1,12 @@
-const firstButton = document.getElementById('buttonSetTimer') 
+const firstButton = document.getElementById('buttonStartTimer') 
 
-const secondButton = document.getElementById('buttonStopWatch') 
+const secondButton = document.getElementById('buttonPauseTimer') 
 
-const thirdButton = document.getElementById('buttonLap') 
+const thirdButton = document.getElementById('buttonResetTimer') 
 
-const fourthButton = document.getElementById('buttonStart')
+const fourthButton = document.getElementById('buttonStartStopWatch')
 
-const fifthButton = document.getElementById('buttonStop')  
+const fifthButton = document.getElementById('buttonStopStopWatch')  
 
 let timeSeconds = 0
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,20 +115,20 @@ secondsButtonDown.addEventListener("click", getReducedSeconds)
 currentSeconds = getEnlargedSeconds()
 currentSeconds = getReducedSeconds()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let isPaused = false
+let isPaused = false;
 function sum() {
 	timeSeconds = currentHours*3600 + currentMinutes*60 + currentSeconds;
     return timeSeconds;
     }
-secondButton.addEventListener("click", () => { isPaused = true; })
+
 
 firstButton.addEventListener("click", sum)
 
-firstButton.addEventListener("click", () => { 
+firstButton.addEventListener("click", () => {  ///TIMER
 
-isPaused = false;
-    
-thirdButton.addEventListener("click", () => {
+	secondButton.addEventListener("click", () => {if (isPaused === true) {isPaused = false} else {isPaused = true} })
+   
+	thirdButton.addEventListener("click", () => {
 	clearInterval(timer)
 	timeMinute = 0
 	currentHours = 0
@@ -136,134 +136,34 @@ thirdButton.addEventListener("click", () => {
 	currentSeconds = 0
     elementHours.textContent = '00'
     elementMinutes.textContent = '00'
-    elementSeconds.textContent = '00'
-}
-)
+    elementSeconds.textContent = '00'           }  )
 	
-	let timer = setInterval( () => {
-    hour = timeSeconds/60/60%60 
-    minutes = timeSeconds/60%60 
-	seconds = timeSeconds%60
-    
-    
-    
-    if (timeSeconds < 1 && isPaused !== true) {
+
+const timer = setInterval( () => {
+	
+hour = timeSeconds/60/60%60 
+minutes = timeSeconds/60%60 
+seconds = timeSeconds%60
+        
+    if ( timeSeconds < 1 ) {
     clearInterval(timer);
     elementHours.textContent = '00'
     elementMinutes.textContent = '00'
     elementSeconds.textContent = '00'
-    } else {
-
+    } else  {
         elementHours.textContent = String(Math.trunc(hour)).padStart(2,'0');
         elementMinutes.textContent = String(Math.trunc(minutes)).padStart(2,'0');
         elementSeconds.textContent = String(Math.trunc(seconds)).padStart(2,'0');
-    }
-    --timeSeconds;
+             }
+             if (isPaused != true) {
+    --timeSeconds;}
 }, 1000)
 }
+
 )
 
 
-
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-}
-
-let result = sum(currentHours,currentMinutes,currentSeconds);
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-secondsCounter = () => {
-	let secondsTimer = () =>  { if ( num3Out > 0 ) { 
-	num3Out = num3Out -1
-	num3In.textContent = String( num3Out ).padStart( 2,'0' )
-	console.log( num3Out )
-}
-    else if ( num3Out == 0 ) {
-    clearInterval( setIntSec )
-}
-
-}
-    let setIntSec = setInterval( secondsTimer, 1000 )
-}
-
-
-firstButton.addEventListener( "click", secondsCounter )
-*/
-
-/*
-
-
-let reset = () => { 
-num1Out = 0
-num2Out = 0
-num3Out = 0
-num1In.textContent = String( 0 ).padStart( 2,'0' ) 
-num2In.textContent = String( 0 ).padStart( 2,'0' ) 
-num3In.textContent = String( 0 ).padStart( 2,'0' ) 
-}
-
-secondButton.addEventListener( "click", reset )
-
-
-*/
-
-
 
 
 
