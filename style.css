@@ -117,7 +117,7 @@ body {
 #bg {
     position: relative;
     z-index: 2;
-    background-image: url('IMG/space.png');
+    background-image: url('space.png');
     background-size: 500px 500px; 
     width: 100vw;
     height: 100vh;
