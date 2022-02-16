@@ -8,9 +8,14 @@ const fourthButton = document.getElementById('buttonStartStopWatch')
 
 const fifthButton = document.getElementById('buttonStopStopWatch')  
 
+const gitUnderCat = document.getElementById('git-under')
+
+const gitCoverCat = document.getElementById('git-cover')
+
+
 let timeSeconds = 0
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementHours = document.querySelector( '.number1' )  //GET VALUE OF HOURS
+const elementHours = document.querySelector( '.timer-hours' )  //GET VALUE OF HOURS
 
 let currentHours = Number(elementHours.textContent) 
 
@@ -45,7 +50,7 @@ hoursButtonDown.addEventListener("click", getReducedHours)
 currentHours = getReducedHours()
 currentHours = getEnlargedHours()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementMinutes = document.querySelector( '.number2' )  //GET VALUE OF MINUTES
+const elementMinutes = document.querySelector( '.timer-minutes' )  //GET VALUE OF MINUTES
 
 let currentMinutes = Number(elementMinutes.textContent)
 
@@ -80,7 +85,7 @@ minutesButtonDown.addEventListener("click", getReducedMinutes)
 currentMinutes = getEnlargedMinutes()
 currentMinutes = getReducedMinutes()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementSeconds = document.querySelector( '.number3' )  //GET VALUE OF SECONDS
+const elementSeconds = document.querySelector( '.timer-seconds' )  //GET VALUE OF SECONDS
 
 let currentSeconds = Number(elementSeconds.textContent)
 
@@ -115,18 +120,18 @@ secondsButtonDown.addEventListener("click", getReducedSeconds)
 currentSeconds = getEnlargedSeconds()
 currentSeconds = getReducedSeconds()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let isPaused = false;
+let timerIsPaused = false;
+secondButton.addEventListener("click", () => {if (timerIsPaused === true) {timerIsPaused = false} else {timerIsPaused = true} })
 function sum() {
 	timeSeconds = currentHours*3600 + currentMinutes*60 + currentSeconds;
     return timeSeconds;
     }
 
-
 firstButton.addEventListener("click", sum)
 
 firstButton.addEventListener("click", () => {  ///TIMER
 
-	secondButton.addEventListener("click", () => {if (isPaused === true) {isPaused = false} else {isPaused = true} })
+	
    
 	thirdButton.addEventListener("click", () => {
 	clearInterval(timer)
@@ -136,7 +141,8 @@ firstButton.addEventListener("click", () => {  ///TIMER
 	currentSeconds = 0
     elementHours.textContent = '00'
     elementMinutes.textContent = '00'
-    elementSeconds.textContent = '00'           }  )
+    elementSeconds.textContent = '00' 
+    timerIsPaused = false; return timerIsPaused;                       }  )
 	
 
 const timer = setInterval( () => {
@@ -155,7 +161,7 @@ seconds = timeSeconds%60
         elementMinutes.textContent = String(Math.trunc(minutes)).padStart(2,'0');
         elementSeconds.textContent = String(Math.trunc(seconds)).padStart(2,'0');
              }
-             if (isPaused != true) {
+             if (timerIsPaused != true) {
     --timeSeconds;}
 }, 1000)
 }
@@ -165,7 +171,23 @@ seconds = timeSeconds%60
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const elementStopwatch = document.querySelector('.stopwatch-time');
 
+fourthButton.addEventListener("click", () => { ///STOPWATCH
+	fifthButton.addEventListener("click", () => {clearInterval(stopwatch);})
+	fifthButton.addEventListener("click", () => {elementStopwatch.textContent = '00:00:00';})
+	let time = 0
+	let stopwatch = setInterval(() => {
+		hour = time/60/60%60 
+        minutes = time/60%60 
+        seconds = time%60
+
+        elementStopwatch.textContent = `${String(Math.trunc(hour)).padStart(2,'0')}:${String(Math.trunc(minutes)).padStart(2,'0')}:${String(Math.trunc(seconds)).padStart(2,'0')}`
+        time++;
+    }, 1000)
+	
+    }
+    )
 
 
 
