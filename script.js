@@ -1,195 +1,157 @@
-const firstButton = document.getElementById('buttonStartTimer') 
+const startTimer = document.getElementById('buttonStartTimer');
+const buttonPauseTimer = document.getElementById('buttonPauseTimer');
+const buttonStopTimer = document.getElementById('buttonStopTimer');
+const buttonStartStopwatch = document.getElementById('buttonStartStopWatch');
+const buttonStopStopwatch = document.getElementById('buttonStopStopWatch');
 
-const secondButton = document.getElementById('buttonPauseTimer') 
+const elementHours = document.querySelector('.timer-hours');
+const hoursButtonUp = document.querySelector('.arrowup1');
+const hoursButtonDown = document.querySelector('.arrowdown1');
 
-const thirdButton = document.getElementById('buttonResetTimer') 
+const elementMinutes = document.querySelector('.timer-minutes');
+const minutesButtonUp = document.querySelector('.arrowup2');
+const minutesButtonDown = document.querySelector('.arrowdown2');
 
-const fourthButton = document.getElementById('buttonStartStopWatch')
-
-const fifthButton = document.getElementById('buttonStopStopWatch')  
-
-const gitUnderCat = document.getElementById('git-under')
-
-const gitCoverCat = document.getElementById('git-cover')
-
-
-let timeSeconds = 0
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementHours = document.querySelector( '.timer-hours' )  //GET VALUE OF HOURS
-
-let currentHours = Number(elementHours.textContent) 
-
-const hoursButtonUp = document.querySelector( '.arrowup1' ) //BUTTON UP
-
-function getEnlargedHours() {
-if (currentHours <= 22) {
-	currentHours += 1
-    }
-else if (currentHours === 23) {
-	currentHours = 0 
-	}
-	elementHours.textContent = String(currentHours).padStart(2,'0')
-    return currentHours;
-}
-hoursButtonUp.addEventListener("click", getEnlargedHours)  
-////////////////////////////////////////////////////////////////
-const hoursButtonDown = document.querySelector( '.arrowdown1' )  //BUTTON DOWN
-
-function getReducedHours() {
-if (currentHours >= 1) {
-	currentHours -=1
-	}
-else if(currentHours === 0) {
-	currentHours = 23
-	}
-	elementHours.textContent = String(currentHours).padStart(2,'0'); 
-	return currentHours;
-}
-hoursButtonDown.addEventListener("click", getReducedHours)  
-
-currentHours = getReducedHours()
-currentHours = getEnlargedHours()
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementMinutes = document.querySelector( '.timer-minutes' )  //GET VALUE OF MINUTES
-
-let currentMinutes = Number(elementMinutes.textContent)
-
-const minutesButtonUp = document.querySelector( '.arrowup2' )   //BUTTON UP
-
-function getEnlargedMinutes() {
-if (currentMinutes <= 58) {
-	currentMinutes +=1
-	}
-else if (currentMinutes == 59) {
-	currentMinutes = 0 
-	}
-	elementMinutes.textContent = String(currentMinutes).padStart(2,'0') 
-    return currentMinutes;
-}
-minutesButtonUp.addEventListener("click", getEnlargedMinutes)  
-////////////////////////////////////////////////////////////////
-const minutesButtonDown = document.querySelector( '.arrowdown2' )   //BUTTON DOWN
-
-function getReducedMinutes() {
-if (currentMinutes >= 1) {
-	currentMinutes -=1
-	}
-else if(currentMinutes == 0) {
-	currentMinutes = 59
-	}
-	elementMinutes.textContent = String(currentMinutes).padStart(2,'0') 
-	return currentMinutes;
-}
-minutesButtonDown.addEventListener("click", getReducedMinutes)  
-
-currentMinutes = getEnlargedMinutes()
-currentMinutes = getReducedMinutes()
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const elementSeconds = document.querySelector( '.timer-seconds' )  //GET VALUE OF SECONDS
-
-let currentSeconds = Number(elementSeconds.textContent)
-
-const secondsButtonUp = document.querySelector( '.arrowup3' ) //BUTTON UP
-
-function getEnlargedSeconds() {
-if (currentSeconds <= 58) {
-	currentSeconds +=1
-	}
-else if (currentSeconds == 59) {
-	currentSeconds = 0 
-    }
-    elementSeconds.textContent = String(currentSeconds).padStart(2,'0') 
-    return currentSeconds;
-}
-secondsButtonUp.addEventListener("click", getEnlargedSeconds)  
-////////////////////////////////////////////////////////////////
-const secondsButtonDown = document.querySelector( '.arrowdown3' )  //BUTTON DOWN
-
-function getReducedSeconds() {
-if (currentSeconds >= 1) {
-	currentSeconds -=1
-	}
-else if(currentSeconds == 0) {
-		currentSeconds = 59	
-	}
-	elementSeconds.textContent = String(currentSeconds).padStart(2,'0') 
-	return currentSeconds;
-}
-secondsButtonDown.addEventListener("click", getReducedSeconds)  
-
-currentSeconds = getEnlargedSeconds()
-currentSeconds = getReducedSeconds()
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-let timerIsPaused = false;
-secondButton.addEventListener("click", () => {if (timerIsPaused === true) {timerIsPaused = false} else {timerIsPaused = true} })
-function sum() {
-	timeSeconds = currentHours*3600 + currentMinutes*60 + currentSeconds;
-    return timeSeconds;
-    }
-
-firstButton.addEventListener("click", sum)
-
-firstButton.addEventListener("click", () => {  ///TIMER
-
-	
-   
-	thirdButton.addEventListener("click", () => {
-	clearInterval(timer)
-	timeMinute = 0
-	currentHours = 0
-	currentMinutes = 0
-	currentSeconds = 0
-    elementHours.textContent = '00'
-    elementMinutes.textContent = '00'
-    elementSeconds.textContent = '00' 
-    timerIsPaused = false; return timerIsPaused;                       }  )
-	
-
-const timer = setInterval( () => {
-	
-hour = timeSeconds/60/60%60 
-minutes = timeSeconds/60%60 
-seconds = timeSeconds%60
-        
-    if ( timeSeconds < 1 ) {
-    clearInterval(timer);
-    elementHours.textContent = '00'
-    elementMinutes.textContent = '00'
-    elementSeconds.textContent = '00'
-    } else  {
-        elementHours.textContent = String(Math.trunc(hour)).padStart(2,'0');
-        elementMinutes.textContent = String(Math.trunc(minutes)).padStart(2,'0');
-        elementSeconds.textContent = String(Math.trunc(seconds)).padStart(2,'0');
-             }
-             if (timerIsPaused != true) {
-    --timeSeconds;}
-}, 1000)
-}
-
-)
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const elementSeconds = document.querySelector('.timer-seconds');
+const secondsButtonUp = document.querySelector('.arrowup3');
+const secondsButtonDown = document.querySelector('.arrowdown3');
 
 const elementStopwatch = document.querySelector('.stopwatch-time');
 
-fourthButton.addEventListener("click", () => { ///STOPWATCH
-	fifthButton.addEventListener("click", () => {clearInterval(stopwatch);})
-	fifthButton.addEventListener("click", () => {elementStopwatch.textContent = '00:00:00';})
-	let time = 0
+let currentHours = Number(elementHours.textContent);
+let currentMinutes = Number(elementMinutes.textContent);
+let currentSeconds = Number(elementSeconds.textContent);
+
+let timerIsPaused = true;
+
+let timeSeconds = 0;
+
+const sum = (a,b,c) => {
+timeSeconds = a*3600 + b*60 + c;
+}
+
+const timeChanging = () => {
+	switch (event.target) {
+		case hoursButtonUp:  
+			if (currentHours <= 22) {
+			currentHours += 1;
+			}
+			else if (currentHours === 23) {
+			currentHours = 0;
+			}
+			elementHours.textContent = String(currentHours).padStart(2,'0')
+			break;
+		case hoursButtonDown:
+			if (currentHours >= 1) {
+			currentHours -=1;
+			}
+			else if(currentHours === 0) {
+			currentHours = 23;
+			}
+			elementHours.textContent = String(currentHours).padStart(2,'0')
+			break;
+		case minutesButtonUp:
+			if (currentMinutes <= 58) {
+			currentMinutes += 1;
+			}
+			else if (currentMinutes === 59) {
+			currentMinutes = 0; 
+			}
+			elementMinutes.textContent = String(currentMinutes).padStart(2,'0')
+			break;
+		case minutesButtonDown:
+			if (currentMinutes >= 1) {
+			currentMinutes -= 1;
+			}
+			else if(currentMinutes === 0) {
+			currentMinutes = 59;
+			}
+			elementMinutes.textContent = String(currentMinutes).padStart(2,'0') 
+			break;
+		case secondsButtonUp:
+			if (currentSeconds <= 58) {
+			currentSeconds +=1
+			}
+			else if (currentSeconds === 59) {
+			currentSeconds = 0 
+			}
+			elementSeconds.textContent = String(currentSeconds).padStart(2,'0')
+			break;
+		case secondsButtonDown:
+			if (currentSeconds >= 1) {
+			currentSeconds -=1
+			}
+			else if(currentSeconds === 0) {
+			currentSeconds = 59	
+			}
+			elementSeconds.textContent = String(currentSeconds).padStart(2,'0')
+			break;
+	}
+}
+		
+hoursButtonUp.addEventListener("click", timeChanging);
+hoursButtonDown.addEventListener("click", timeChanging); 
+
+minutesButtonUp.addEventListener("click", timeChanging);
+minutesButtonDown.addEventListener("click", timeChanging);
+
+secondsButtonUp.addEventListener("click", timeChanging);
+secondsButtonDown.addEventListener("click", timeChanging);
+
+buttonStartTimer.addEventListener("click", () => {
+	sum(currentHours,currentMinutes,currentSeconds)
+	const timer = setInterval(() => {
+	const hour = timeSeconds/60/60%60 
+	const minutes = timeSeconds/60%60 
+	const seconds = timeSeconds%60
+	if (timeSeconds < 1) {
+		clearInterval(timer);
+		elementHours.textContent = '00'
+		elementMinutes.textContent = '00'
+		elementSeconds.textContent = '00'
+	} 
+	else if (timerIsPaused === false) {
+		elementHours.textContent = String(Math.trunc(hour)).padStart(2,'0');
+		elementMinutes.textContent = String(Math.trunc(minutes)).padStart(2,'0');
+		elementSeconds.textContent = String(Math.trunc(seconds)).padStart(2,'0');
+	}
+	--timeSeconds;
+	}, 1000)
+
+	buttonStopTimer.addEventListener("click", () => {
+		clearInterval(timer);
+		timeMinute = 0
+		currentHours = 0
+		currentMinutes = 0
+		currentSeconds = 0
+		elementHours.textContent = '00'
+		elementMinutes.textContent = '00'
+		elementSeconds.textContent = '00'
+	}
+	)
+	timerIsPaused = false;
+	}
+	)
+
+buttonPauseTimer.addEventListener("click", () => {
+	timerIsPaused = timerIsPaused !== true;
+	}
+	)
+
+buttonStartStopwatch.addEventListener("click", () => { 
+
+	let stopwatchTime = 0
 	let stopwatch = setInterval(() => {
-		hour = time/60/60%60 
-        minutes = time/60%60 
-        seconds = time%60
-
+		hour = stopwatchTime/60/60%60 
+        minutes = stopwatchTime/60%60 
+        seconds = stopwatchTime%60
         elementStopwatch.textContent = `${String(Math.trunc(hour)).padStart(2,'0')}:${String(Math.trunc(minutes)).padStart(2,'0')}:${String(Math.trunc(seconds)).padStart(2,'0')}`
-        time++;
-    }, 1000)
-	
-    }
-    )
-
-
-
-
-
+        stopwatchTime++;
+    	}, 1000)
+	buttonStopStopwatch.addEventListener("click", () => {
+		clearInterval(stopwatch);
+		elementStopwatch.textContent = '00:00:00';
+		}
+	)
+}
+)
